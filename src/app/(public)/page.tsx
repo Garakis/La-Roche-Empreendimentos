@@ -51,6 +51,11 @@ export default async function Home() {
                     loading="lazy"
                   />
                   <span className={`status-badge ${project.statusClass}`}>{project.status}</span>
+                  {project.gallery && project.gallery.length > 0 && (
+                    <span style={{ position: "absolute", bottom: "0.75rem", right: "0.75rem", background: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)", color: "#fff", fontSize: "0.72rem", fontWeight: 700, padding: "0.3rem 0.6rem", borderRadius: "20px", display: "flex", alignItems: "center", gap: "0.3rem" }}>
+                      📷 {project.gallery.length}
+                    </span>
+                  )}
                 </div>
                 <div className="card-content">
                   <h3 className="card-title">{project.title}</h3>
