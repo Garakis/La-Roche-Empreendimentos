@@ -4,15 +4,13 @@ CREATE TABLE IF NOT EXISTS projects (
   title text NOT NULL,
   location text NOT NULL,
   status text NOT NULL,
-  statusClass text NOT NULL,
-  desc text NOT NULL,
-  heroImage text NOT NULL,
-  innerImage text NOT NULL,
-  gallery text[] NOT NULL,
+  "statusClass" text NOT NULL,
+  "desc" text NOT NULL,
+  "heroImage" text NOT NULL,
+  "innerImage" text NOT NULL,
+  gallery text[] NOT NULL DEFAULT '{}',
   "order" integer NOT NULL
 );
 
--- DISABLE ROW LEVEL SECURITY TEMPORARILY OR ALLOW ALL FOR DEV
--- (In a real production app, do not allow public inserts without auth,
--- but for this static migration MVP with an obscure secret admin we allow anon access)
+-- Allow public read/write (admin-managed data, no auth needed on table level)
 ALTER TABLE projects DISABLE ROW LEVEL SECURITY;

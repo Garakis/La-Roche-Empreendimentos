@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Project } from "@/lib/data";
 import Lightbox from "@/components/Lightbox";
 
@@ -51,6 +51,75 @@ function Field({ label, value, onChange, multiline, placeholder }: {
         : <input type="text" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} style={{ ...base, resize: undefined }}
             onFocus={e => e.target.style.borderColor = D.inputBorderFocus}
             onBlur={e => e.target.style.borderColor = D.inputBorder} />}
+    </div>
+  );
+}
+
+function UploadZone({ projectId, onUploaded }: { projectId: string; onUploaded: (url: string) => void }) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [uploading, setUploading] = useState(false);
+  const [dragOver, setDragOver] = useState(false);
+  const [uploadError, setUploadError] = useState("");
+
+  const uploadFile = async (file: File) => {
+    setUploading(true);
+    setUploadError("");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("projectId", projectId);
+    try {
+      const res = await fetch("/api/upload", { method: "POST", body: formData });
+      const data = await res.json();
+      if (res.ok && data.url) {
+        onUploaded(data.url);
+      } else {
+        setUploadError(data.error || "Erro no upload");
+      }
+    } catch {
+      setUploadError("Erro de rede");
+    }
+    setUploading(false);
+  };
+
+  const handleFiles = (files: FileList | null) => {
+    if (!files) return;
+    Array.from(files).forEach(f => uploadFile(f));
+  };
+
+  return (
+    <div style={{ marginTop: "0.75rem" }}>
+      <div style={{ fontSize: "0.65rem", color: D.textMuted, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "0.35rem" }}>Upload de Fotos/Vídeos</div>
+      <div
+        onClick={() => inputRef.current?.click()}
+        onDragOver={e => { e.preventDefault(); setDragOver(true); }}
+        onDragLeave={() => setDragOver(false)}
+        onDrop={e => { e.preventDefault(); setDragOver(false); handleFiles(e.dataTransfer.files); }}
+        style={{
+          border: `2px dashed ${dragOver ? D.accent : D.inputBorder}`,
+          borderRadius: "10px",
+          padding: "1.25rem",
+          textAlign: "center",
+          cursor: "pointer",
+          background: dragOver ? D.accentBg : "rgba(255,255,255,0.02)",
+          transition: "all 0.2s",
+          color: D.textMuted,
+          fontSize: "0.82rem"
+        }}
+      >
+        {uploading
+          ? <span style={{ color: D.accent }}>⟳ Enviando...</span>
+          : <span>📁 Clique ou arraste fotos/vídeos aqui<br /><span style={{ fontSize: "0.72rem", opacity: 0.6 }}>JPG, PNG, WEBP, MP4, MOV</span></span>
+        }
+      </div>
+      {uploadError && <div style={{ color: D.error, fontSize: "0.78rem", marginTop: "0.35rem" }}>⚠ {uploadError}</div>}
+      <input
+        ref={inputRef}
+        type="file"
+        multiple
+        accept="image/*,video/*"
+        style={{ display: "none" }}
+        onChange={e => handleFiles(e.target.files)}
+      />
     </div>
   );
 }
@@ -221,6 +290,7 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
   const [deleteTarget, setDeleteTarget] = useState<Project | null>(null);
   const [showCreate, setShowCreate] = useState(false);
   const [lightbox, setLightbox] = useState<{ items: string[]; index: number } | null>(null);
+  const [uploadingIds, setUploadingIds] = useState<Set<string>>(new Set());
 
   const updateField = (index: number, field: keyof Project, value: any) => {
     setProjects(prev => { const n = [...prev]; (n[index] as any)[field] = value; return n; });
@@ -404,6 +474,16 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                       style={{ width: "100%", background: D.inputBg, border: `1px solid ${D.inputBorder}`, borderRadius: "8px", color: D.text, fontSize: "0.8rem", padding: "0.6rem 0.85rem", outline: "none", boxSizing: "border-box", fontFamily: "monospace", resize: "vertical" }}
                     />
                   </div>
+
+                  {/* Upload Zone */}
+                  <UploadZone
+                    projectId={project.id}
+                    onUploaded={url => {
+                      updateField(idx, "gallery", [...(project.gallery || []), url]);
+                      setFeedback({ type: "success", msg: "Arquivo enviado com sucesso! Clique em Publicar para salvar." });
+                      setTimeout(() => setFeedback(null), 6000);
+                    }}
+                  />
                 </div>
               )}
             </div>
