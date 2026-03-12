@@ -107,11 +107,11 @@ function UploadZone({ projectId, onUploaded }: { projectId: string; onUploaded: 
         }}
       >
         {uploading
-          ? <span style={{ color: D.accent }}>⟳ Enviando...</span>
-          : <span>📁 Clique ou arraste fotos/vídeos aqui<br /><span style={{ fontSize: "0.72rem", opacity: 0.6 }}>JPG, PNG, WEBP, MP4, MOV</span></span>
+          ? <span style={{ color: D.accent, display: "flex", alignItems: "center", gap: "0.4rem" }}><i className="ph ph-spinner" style={{ fontSize: "1.1rem" }} /> Enviando...</span>
+          : <span><i className="ph ph-upload-simple" style={{ fontSize: "1.4rem", display: "block", margin: "0 auto 0.35rem" }} /><span>Clique ou arraste fotos/vídeos aqui</span><br /><span style={{ fontSize: "0.72rem", opacity: 0.6 }}>JPG, PNG, WEBP, MP4, MOV</span></span>
         }
       </div>
-      {uploadError && <div style={{ color: D.error, fontSize: "0.78rem", marginTop: "0.35rem" }}>⚠ {uploadError}</div>}
+      {uploadError && <div style={{ color: D.error, fontSize: "0.78rem", marginTop: "0.35rem", display: "flex", alignItems: "center", gap: "0.3rem" }}><i className="ph ph-warning" /> {uploadError}</div>}
       <input
         ref={inputRef}
         type="file"
@@ -138,7 +138,7 @@ function ConfirmModal({ onClose, onConfirm, count }: { onClose: () => void; onCo
   return (
     <ModalOverlay onClose={onClose}>
       <div style={{ textAlign: "center" }}>
-        <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>☁️</div>
+        <div style={{ marginBottom: "1rem" }}><i className="ph ph-cloud-arrow-up" style={{ fontSize: "2.8rem", color: D.accent }} /></div>
         <h2 style={{ color: D.text, fontFamily: "'Playfair Display', serif", marginBottom: "0.5rem", fontSize: "1.3rem" }}>Publicar Alterações</h2>
         <p style={{ color: D.textMuted, fontSize: "0.875rem", marginBottom: "2rem" }}>
           Você está prestes a atualizar <strong style={{ color: D.text }}>{count} empreendimento{count !== 1 ? "s" : ""}</strong> no banco de dados. Esta ação afetará o site ao vivo.
@@ -148,7 +148,7 @@ function ConfirmModal({ onClose, onConfirm, count }: { onClose: () => void; onCo
             Cancelar
           </button>
           <button onClick={onConfirm} style={{ padding: "0.7rem 1.5rem", background: "linear-gradient(135deg, #1a6fdb, #0050a0)", border: "none", borderRadius: "8px", color: "#fff", fontWeight: 700, cursor: "pointer", fontFamily: "'Montserrat', sans-serif" }}>
-            Confirmar e Publicar ✓
+            <i className="ph ph-check" /> Confirmar e Publicar
           </button>
         </div>
       </div>
@@ -160,7 +160,7 @@ function DeleteModal({ project, onClose, onConfirm }: { project: Project; onClos
   return (
     <ModalOverlay onClose={onClose}>
       <div style={{ textAlign: "center" }}>
-        <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>🗑️</div>
+        <div style={{ marginBottom: "1rem" }}><i className="ph ph-trash" style={{ fontSize: "2.8rem", color: D.danger }} /></div>
         <h2 style={{ color: D.text, fontFamily: "'Playfair Display', serif", marginBottom: "0.5rem", fontSize: "1.3rem" }}>Excluir Empreendimento</h2>
         <p style={{ color: D.textMuted, fontSize: "0.875rem", marginBottom: "2rem" }}>
           Tem certeza que deseja excluir <strong style={{ color: D.danger }}>{project.title}</strong>? Esta ação é irreversível e removerá o registro do banco de dados.
@@ -222,7 +222,7 @@ function CreatePanel({ onSave, onClose }: { onSave: (p: Project) => void; onClos
       >
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
           <h2 style={{ color: D.text, fontFamily: "'Playfair Display', serif", fontSize: "1.3rem", margin: 0 }}>Novo Empreendimento</h2>
-          <button onClick={onClose} style={{ background: "rgba(255,255,255,0.06)", border: "none", color: D.textMuted, borderRadius: "50%", width: "36px", height: "36px", cursor: "pointer", fontSize: "1rem" }}>✕</button>
+          <button onClick={onClose} style={{ background: "rgba(255,255,255,0.06)", border: "none", color: D.textMuted, borderRadius: "50%", width: "36px", height: "36px", cursor: "pointer", fontSize: "1rem", display: "flex", alignItems: "center", justifyContent: "center" }}><i className="ph ph-x" /></button>
         </div>
 
         <Field label="Título *" value={form.title} onChange={set("title")} placeholder="Ex: Casa Pinda 03" />
@@ -360,20 +360,20 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
           <button
             onClick={() => setShowCreate(true)}
             style={{ display: "flex", alignItems: "center", gap: "0.4rem", padding: "0.6rem 1rem", background: D.accentBg, border: `1px solid rgba(76,143,219,0.3)`, borderRadius: "8px", color: D.accent, fontWeight: 700, cursor: "pointer", fontSize: "0.8rem", fontFamily: "'Montserrat', sans-serif" }}
-          >＋ Novo Empreendimento</button>
+          ><i className="ph ph-plus" /> Novo Empreendimento</button>
         </div>
 
         <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
           {feedback && (
             <div style={{ padding: "0.45rem 0.9rem", borderRadius: "7px", fontSize: "0.78rem", fontWeight: 600, background: feedback.type === "success" ? D.successBg : D.errorBg, color: feedback.type === "success" ? D.success : D.error, border: `1px solid ${feedback.type === "success" ? "rgba(34,197,94,0.25)" : "rgba(248,113,113,0.25)"}` }}>
-              {feedback.type === "success" ? "✓ " : "⚠ "}{feedback.msg}
+              {feedback.type === "success" ? <i className="ph ph-check-circle" /> : <i className="ph ph-warning" />} {feedback.msg}
             </div>
           )}
           <button
             onClick={() => setShowConfirm(true)}
             disabled={saving}
             style={{ display: "flex", alignItems: "center", gap: "0.5rem", padding: "0.7rem 1.4rem", background: saving ? "rgba(76,143,219,0.3)" : "linear-gradient(135deg, #1a6fdb, #0050a0)", color: "#fff", border: "none", borderRadius: "8px", fontSize: "0.85rem", fontWeight: 700, cursor: saving ? "not-allowed" : "pointer", boxShadow: "0 4px 15px rgba(0,80,160,0.3)", fontFamily: "'Montserrat', sans-serif" }}
-          >{saving ? "⟳ Salvando..." : "☁ Publicar Alterações"}</button>
+          >{saving ? <><i className="ph ph-spinner" /> Salvando...</> : <><i className="ph ph-cloud-arrow-up" /> Publicar Alterações</>}</button>
         </div>
       </div>
 
@@ -394,7 +394,7 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                   <div style={{ fontSize: "0.72rem", color: D.textMuted }}>{project.location}</div>
                 </div>
                 <span style={{ padding: "0.25rem 0.65rem", borderRadius: "5px", fontSize: "0.7rem", fontWeight: 700, background: D.accentBg, color: D.accent, whiteSpace: "nowrap" }}>{project.status}</span>
-                {allMedia.length > 0 && <span style={{ fontSize: "0.72rem", color: D.textMuted }}>📸 {allMedia.length}</span>}
+                {allMedia.length > 0 && <span style={{ fontSize: "0.72rem", color: D.textMuted, display: "flex", alignItems: "center", gap: "0.2rem" }}><i className="ph ph-images" />{allMedia.length}</span>}
 
                 {/* Reorder */}
                 <div style={{ display: "flex", flexDirection: "column", gap: "2px" }} onClick={e => e.stopPropagation()}>
@@ -407,9 +407,9 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
 
                 {/* Delete */}
                 <button onClick={e => { e.stopPropagation(); setDeleteTarget(project); }}
-                  style={{ background: D.dangerBg, border: `1px solid ${D.dangerBorder}`, color: D.danger, borderRadius: "7px", padding: "0.3rem 0.6rem", cursor: "pointer", fontSize: "0.75rem", fontFamily: "'Montserrat', sans-serif" }}
+                  style={{ background: D.dangerBg, border: `1px solid ${D.dangerBorder}`, color: D.danger, borderRadius: "7px", padding: "0.3rem 0.6rem", cursor: "pointer", fontSize: "0.85rem", fontFamily: "'Montserrat', sans-serif", display: "flex", alignItems: "center" }}
                   title="Excluir empreendimento"
-                >🗑</button>
+                ><i className="ph ph-trash" /></button>
 
                 <span style={{ color: D.textMuted, transform: isOpen ? "rotate(180deg)" : "none", transition: "transform 0.2s" }}>▾</span>
               </div>
@@ -436,7 +436,7 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                   <div style={{ marginTop: "1rem" }}>
                     <div style={{ fontSize: "0.65rem", color: D.textMuted, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "0.6rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
                       <span>Galeria · {allMedia.length} {allMedia.length === 1 ? "arquivo" : "arquivos"}</span>
-                      {allMedia.length > 0 && <span style={{ fontWeight: 400, opacity: 0.6 }}>⭐ capa &nbsp;·&nbsp; ←→ reordenar &nbsp;·&nbsp; ✕ remover</span>}
+                      {allMedia.length > 0 && <span style={{ fontWeight: 400, opacity: 0.6, display: "flex", alignItems: "center", gap: "0.4rem" }}><i className="ph ph-star" />capa &nbsp;·&nbsp; <i className="ph ph-arrows-left-right" />reordenar &nbsp;·&nbsp; <i className="ph ph-x" />remover</span>}
                     </div>
 
                     {allMedia.length > 0 && (
@@ -467,7 +467,7 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                                 }}
                               >
                                 {isVideo(url)
-                                  ? <div style={{ width: "100%", height: "100%", background: "#002040", display: "flex", alignItems: "center", justifyContent: "center", color: "#acd4f4", fontSize: "1.5rem" }}>▶</div>
+                                  ? <div style={{ width: "100%", height: "100%", background: "#002040", display: "flex", alignItems: "center", justifyContent: "center", color: "#acd4f4", fontSize: "1.5rem" }}><i className="ph ph-play-circle" /></div>
                                   : <img src={url} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                                 }
                               </div>
@@ -477,7 +477,7 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                                 title="Remover da galeria"
                                 onClick={removeItem}
                                 style={{ position: "absolute", top: "-6px", left: "-6px", background: "#f87171", border: "none", borderRadius: "50%", width: "20px", height: "20px", fontSize: "0.65rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", boxShadow: "0 2px 4px rgba(0,0,0,0.3)", fontWeight: 700 }}
-                              >✕</button>
+                              ><i className="ph ph-x" /></button>
 
                               {/* Cover star */}
                               {!isVideo(url) && (
@@ -485,19 +485,19 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                                   title={isCover ? "Capa atual" : "Definir como capa"}
                                   onClick={() => updateField(idx, "heroImage", url)}
                                   style={{ position: "absolute", top: "-6px", right: "-6px", background: isCover ? "#f5c518" : "rgba(0,0,0,0.55)", border: "none", borderRadius: "50%", width: "20px", height: "20px", fontSize: "0.6rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
-                                >⭐</button>
+                                ><i className={isCover ? "ph-fill ph-star" : "ph ph-star"} /></button>
                               )}
 
                               {/* Reorder arrows */}
                               <div style={{ position: "absolute", bottom: "3px", left: "50%", transform: "translateX(-50%)", display: "flex", gap: "2px" }}>
                                 <button
                                   onClick={() => moveItem("left")} disabled={gi === 0} title="Mover para esquerda"
-                                  style={{ width: "20px", height: "18px", background: "rgba(0,0,0,0.6)", border: "none", color: gi === 0 ? "rgba(255,255,255,0.2)" : "#fff", cursor: gi === 0 ? "not-allowed" : "pointer", fontSize: "0.55rem", borderRadius: "3px", display: "flex", alignItems: "center", justifyContent: "center" }}
-                                >◀</button>
+                                  style={{ width: "20px", height: "18px", background: "rgba(0,0,0,0.6)", border: "none", color: gi === 0 ? "rgba(255,255,255,0.2)" : "#fff", cursor: gi === 0 ? "not-allowed" : "pointer", fontSize: "0.75rem", borderRadius: "3px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                                >< i className="ph ph-caret-left" /></button>
                                 <button
                                   onClick={() => moveItem("right")} disabled={gi === allMedia.length - 1} title="Mover para direita"
-                                  style={{ width: "20px", height: "18px", background: "rgba(0,0,0,0.6)", border: "none", color: gi === allMedia.length - 1 ? "rgba(255,255,255,0.2)" : "#fff", cursor: gi === allMedia.length - 1 ? "not-allowed" : "pointer", fontSize: "0.55rem", borderRadius: "3px", display: "flex", alignItems: "center", justifyContent: "center" }}
-                                >▶</button>
+                                  style={{ width: "20px", height: "18px", background: "rgba(0,0,0,0.6)", border: "none", color: gi === allMedia.length - 1 ? "rgba(255,255,255,0.2)" : "#fff", cursor: gi === allMedia.length - 1 ? "not-allowed" : "pointer", fontSize: "0.75rem", borderRadius: "3px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                                ><i className="ph ph-caret-right" /></button>
                               </div>
                             </div>
                           );

@@ -180,7 +180,7 @@ export default function Lightbox({ items, initialIndex = 0, onClose }: LightboxP
         {/* Top bar */}
         <div className="lb-top">
           <span className="lb-counter">{current + 1} / {items.length}</span>
-          <button className="lb-close" onClick={onClose} aria-label="Fechar">✕</button>
+          <button className="lb-close" onClick={onClose} aria-label="Fechar"><i className="ph ph-x" /></button>
         </div>
 
         {/* Media stage */}
@@ -224,7 +224,7 @@ export default function Lightbox({ items, initialIndex = 0, onClose }: LightboxP
                   aria-label={`Ir para foto ${i + 1}`}
                 >
                   {isVideo(item)
-                    ? <div className="lb-thumb-video">▶</div>
+                    ? <div className="lb-thumb-video"><i className="ph ph-play-circle" /></div>
                     : <img src={item} alt="" />
                   }
                 </div>

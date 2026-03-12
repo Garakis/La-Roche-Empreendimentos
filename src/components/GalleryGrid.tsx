@@ -109,13 +109,13 @@ export default function GalleryGrid({ gallery, title }: Props) {
           <div className="pg-featured-main" onClick={() => open(0)}>
             {isVideo(featured) ? (
               <div className="pg-video-bg">
-                <span className="v-icon">▶</span>
+                                      <i className="ph ph-play-circle" />
                 <span className="v-label">Vídeo</span>
               </div>
             ) : (
               <img src={featured} alt={`${title} - destaque`} loading="eager" />
             )}
-            <div className="pg-overlay"><div className="pg-overlay-icon">🔍</div></div>
+            <div className="pg-overlay"><div className="pg-overlay-icon"><i className="ph ph-magnifying-glass-plus" /></div></div>
           </div>
 
           {/* Side 2 thumbnails */}
@@ -128,7 +128,7 @@ export default function GalleryGrid({ gallery, title }: Props) {
                   <div key={realIdx} className="pg-thumb" onClick={() => open(isLast ? 0 : realIdx)}>
                     {isVideo(url) ? (
                       <div className="pg-video-bg" style={{ borderRadius: 0 }}>
-                        <span className="v-icon" style={{ fontSize: "1.5rem" }}>▶</span>
+                                                <i className="ph ph-play-circle" />
                       </div>
                     ) : (
                       <img src={url} alt={`${title} - ${realIdx + 1}`} loading="lazy" />
@@ -156,12 +156,12 @@ export default function GalleryGrid({ gallery, title }: Props) {
                 <div key={realIdx} className="pg-thumb" onClick={() => open(realIdx)}>
                   {isVideo(url) ? (
                     <div className="pg-video-bg" style={{ borderRadius: 0 }}>
-                      <span className="v-icon" style={{ fontSize: "1.5rem" }}>▶</span>
+                                              <i className="ph ph-play-circle" />
                     </div>
                   ) : (
                     <img src={url} alt={`${title} - ${realIdx + 1}`} loading="lazy" />
                   )}
-                  <div className="pg-overlay"><div className="pg-overlay-icon">🔍</div></div>
+                  <div className="pg-overlay"><div className="pg-overlay-icon"><i className="ph ph-magnifying-glass-plus" /></div></div>
                 </div>
               );
             })}

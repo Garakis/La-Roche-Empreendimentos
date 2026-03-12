@@ -133,7 +133,7 @@ export default function LoginPage() {
               alignItems: "center",
               gap: "0.5rem"
             }}>
-              <span>⚠</span> {error}
+              <i className="ph ph-warning" /> {error}
             </div>
           )}
 
