@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AdminListener from "@/components/AdminListener";
 import VanillaScripts from "@/components/VanillaScripts";
 import { getProjects } from "@/lib/data";
 
@@ -36,7 +35,6 @@ export default async function RootLayout({
         <Navbar projects={projects} />
         {children}
         <Footer />
-        <AdminListener />
         <VanillaScripts />
       </body>
     </html>
