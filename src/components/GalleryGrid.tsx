@@ -15,6 +15,11 @@ export default function GalleryGrid({ gallery, title }: Props) {
 
   if (!gallery || gallery.length === 0) return null;
 
+  const open = (i: number) => setLightboxIndex(i);
+
+  // Split into featured (first) + rest
+  const [featured, ...rest] = gallery;
+
   return (
     <>
       {lightboxIndex !== null && (
@@ -22,85 +27,146 @@ export default function GalleryGrid({ gallery, title }: Props) {
       )}
 
       <style>{`
-        .gallery-grid {
+        .pg-gallery { margin-top: 2.5rem; }
+        .pg-featured-row {
+          display: grid;
+          grid-template-columns: 2fr 1fr;
+          gap: 6px;
+          margin-bottom: 6px;
+        }
+        @media (max-width: 640px) {
+          .pg-featured-row { grid-template-columns: 1fr; }
+        }
+        .pg-featured-main {
+          position: relative; border-radius: 10px 0 0 10px; overflow: hidden;
+          cursor: pointer; background: #e8ecf0;
+          aspect-ratio: 16/10;
+        }
+        @media (max-width: 640px) {
+          .pg-featured-main { border-radius: 10px; aspect-ratio: 4/3; }
+        }
+        .pg-featured-side {
+          display: grid; grid-template-rows: 1fr 1fr; gap: 6px;
+        }
+        .pg-featured-side .pg-thumb:first-child { border-radius: 0 10px 0 0; }
+        .pg-featured-side .pg-thumb:last-child  { border-radius: 0 0 10px 0; }
+        @media (max-width: 640px) {
+          .pg-featured-side { grid-template-columns: 1fr 1fr; grid-template-rows: none; }
+          .pg-featured-side .pg-thumb:first-child { border-radius: 10px 0 0 10px; }
+          .pg-featured-side .pg-thumb:last-child  { border-radius: 0 10px 10px 0; }
+        }
+        .pg-thumb {
+          position: relative; overflow: hidden; cursor: pointer;
+          background: #e8ecf0; aspect-ratio: 4/3;
+        }
+        .pg-thumb img, .pg-featured-main img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .pg-thumb:hover img, .pg-featured-main:hover img { transform: scale(1.05); }
+        .pg-overlay {
+          position: absolute; inset: 0;
+          display: flex; align-items: center; justify-content: center;
+          background: rgba(0,31,63,0); transition: background 0.3s;
+        }
+        .pg-thumb:hover .pg-overlay,
+        .pg-featured-main:hover .pg-overlay { background: rgba(0,31,63,0.28); }
+        .pg-overlay-icon {
+          opacity: 0; transition: opacity 0.25s;
+          width: 48px; height: 48px; border-radius: 50%;
+          background: rgba(255,255,255,0.92);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 1.1rem; color: #00315e;
+        }
+        .pg-thumb:hover .pg-overlay-icon,
+        .pg-featured-main:hover .pg-overlay-icon { opacity: 1; }
+        .pg-video-bg {
+          width: 100%; height: 100%; background: #002040;
+          display: flex; flex-direction: column; align-items: center; justify-content: center;
+          gap: 0.5rem; color: #fff;
+        }
+        .pg-video-bg .v-icon { font-size: 2.5rem; }
+        .pg-video-bg .v-label { font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.65; }
+        /* More button */
+        .pg-more-btn {
+          position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+          background: rgba(0,31,63,0.55); color: #fff; flex-direction: column; gap: 0.25rem;
+        }
+        .pg-more-btn .m-count { font-size: 1.8rem; font-weight: 700; line-height: 1; }
+        .pg-more-btn .m-label { font-size: 0.68rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
+        /* Secondary grid */
+        .pg-rest-grid {
           display: grid;
           grid-template-columns: repeat(4, 1fr);
-          gap: 0.6rem;
-          margin-top: 2rem;
+          gap: 6px;
         }
-        @media (max-width: 1100px) {
-          .gallery-grid { grid-template-columns: repeat(3, 1fr); }
-        }
-        @media (max-width: 700px) {
-          .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.4rem; }
-        }
-        @media (max-width: 420px) {
-          .gallery-grid { grid-template-columns: 1fr 1fr; }
-        }
-        .gallery-item {
-          position: relative;
-          border-radius: 8px;
-          overflow: hidden;
-          cursor: pointer;
-          aspect-ratio: 4/3;
-          background: #eaeaea;
-        }
-        .gallery-item img, .gallery-item .video-thumb {
-          width: 100%; height: 100%; object-fit: cover;
-          transition: transform 0.3s ease;
-          display: block;
-        }
-        .gallery-item:hover img, .gallery-item:hover .video-thumb {
-          transform: scale(1.06);
-        }
-        .gallery-item .overlay {
-          position: absolute; inset: 0;
-          background: rgba(0,49,94,0);
-          display: flex; align-items: center; justify-content: center;
-          transition: background 0.25s;
-        }
-        .gallery-item:hover .overlay {
-          background: rgba(0,49,94,0.3);
-        }
-        .gallery-item .overlay-icon {
-          opacity: 0;
-          background: rgba(255,255,255,0.9);
-          border-radius: 50%;
-          width: 44px; height: 44px;
-          display: flex; align-items: center; justify-content: center;
-          font-size: 1.2rem;
-          transition: opacity 0.25s;
-        }
-        .gallery-item:hover .overlay-icon { opacity: 1; }
-        .video-thumb {
-          background: #00315e;
-          display: flex !important;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          gap: 0.4rem;
-          color: #fff;
-          font-size: 2rem;
-        }
-        .video-thumb span { font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; opacity: 0.7; }
+        @media (max-width: 900px) { .pg-rest-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 580px) { .pg-rest-grid { grid-template-columns: repeat(2, 1fr); } }
+        .pg-rest-grid .pg-thumb { border-radius: 6px; }
       `}</style>
 
-      <div className="gallery-grid">
-        {gallery.map((url, i) => (
-          <div key={i} className="gallery-item" onClick={() => setLightboxIndex(i)} role="button" aria-label={`Ver ${title} foto ${i + 1}`}>
-            {isVideo(url) ? (
-              <div className="video-thumb">
-                <span>▶</span>
-                <span>Vídeo</span>
+      <div className="pg-gallery">
+        {/* Featured row: first image large + next 2 as side stack */}
+        <div className="pg-featured-row">
+          {/* Large featured */}
+          <div className="pg-featured-main" onClick={() => open(0)}>
+            {isVideo(featured) ? (
+              <div className="pg-video-bg">
+                <span className="v-icon">▶</span>
+                <span className="v-label">Vídeo</span>
               </div>
             ) : (
-              <img src={url} alt={`${title} - ${i + 1}`} loading="lazy" />
+              <img src={featured} alt={`${title} - destaque`} loading="eager" />
             )}
-            <div className="overlay">
-              <div className="overlay-icon">{isVideo(url) ? "▶" : "🔍"}</div>
-            </div>
+            <div className="pg-overlay"><div className="pg-overlay-icon">🔍</div></div>
           </div>
-        ))}
+
+          {/* Side 2 thumbnails */}
+          {rest.length > 0 && (
+            <div className="pg-featured-side">
+              {rest.slice(0, 2).map((url, i) => {
+                const realIdx = i + 1;
+                const isLast = i === 1 && rest.length > 2;
+                return (
+                  <div key={realIdx} className="pg-thumb" onClick={() => open(isLast ? 0 : realIdx)}>
+                    {isVideo(url) ? (
+                      <div className="pg-video-bg" style={{ borderRadius: 0 }}>
+                        <span className="v-icon" style={{ fontSize: "1.5rem" }}>▶</span>
+                      </div>
+                    ) : (
+                      <img src={url} alt={`${title} - ${realIdx + 1}`} loading="lazy" />
+                    )}
+                    {isLast && (
+                      <div className="pg-more-btn">
+                        <span className="m-count">+{rest.length - 1}</span>
+                        <span className="m-label">Ver todas</span>
+                      </div>
+                    )}
+                    {!isLast && <div className="pg-overlay"><div className="pg-overlay-icon">🔍</div></div>}
+                  </div>
+                );
+              })}
+            </div>
+          )}
+        </div>
+
+        {/* Rest of images (index 3+) in a grid — only if more than 3 total */}
+        {rest.length > 2 && (
+          <div className="pg-rest-grid">
+            {rest.slice(2).map((url, i) => {
+              const realIdx = i + 3;
+              return (
+                <div key={realIdx} className="pg-thumb" onClick={() => open(realIdx)}>
+                  {isVideo(url) ? (
+                    <div className="pg-video-bg" style={{ borderRadius: 0 }}>
+                      <span className="v-icon" style={{ fontSize: "1.5rem" }}>▶</span>
+                    </div>
+                  ) : (
+                    <img src={url} alt={`${title} - ${realIdx + 1}`} loading="lazy" />
+                  )}
+                  <div className="pg-overlay"><div className="pg-overlay-icon">🔍</div></div>
+                </div>
+              );
+            })}
+          </div>
+        )}
       </div>
     </>
   );

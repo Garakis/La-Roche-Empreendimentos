@@ -432,47 +432,84 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                     <Field label="URL Imagem Interna" value={project.innerImage} onChange={v => updateField(idx, "innerImage", v)} placeholder="https://..." />
                   </div>
 
-                  {/* Gallery */}
-                  {allMedia.length > 0 && (
-                    <div>
-                      <div style={{ fontSize: "0.65rem", color: D.textMuted, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "0.5rem" }}>
-                        Galeria · clique para ampliar · ⭐ para definir como capa
-                      </div>
-                      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
-                        {allMedia.map((url, gi) => (
-                          <div key={gi} style={{ position: "relative" }}>
-                            <div
-                              onClick={() => setLightbox({ items: allMedia, index: gi })}
-                              style={{ width: "80px", height: "80px", borderRadius: "8px", overflow: "hidden", cursor: "pointer", border: url === project.heroImage ? `2px solid gold` : `1px solid ${D.cardBorder}` }}
-                            >
-                              {isVideo(url)
-                                ? <div style={{ width: "100%", height: "100%", background: "#222", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff" }}>▶</div>
-                                : <img src={url} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                              }
-                            </div>
-                            {/* Set as cover */}
-                            {!isVideo(url) && (
-                              <button
-                                title="Definir como capa"
-                                onClick={() => updateField(idx, "heroImage", url)}
-                                style={{ position: "absolute", top: "2px", right: "2px", background: url === project.heroImage ? "gold" : "rgba(0,0,0,0.5)", border: "none", borderRadius: "50%", width: "20px", height: "20px", fontSize: "0.65rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center" }}
-                              >⭐</button>
-                            )}
-                          </div>
-                        ))}
-                      </div>
+                  {/* ── Media Manager ─────────────────────────────── */}
+                  <div style={{ marginTop: "1rem" }}>
+                    <div style={{ fontSize: "0.65rem", color: D.textMuted, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "0.6rem", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                      <span>Galeria · {allMedia.length} {allMedia.length === 1 ? "arquivo" : "arquivos"}</span>
+                      {allMedia.length > 0 && <span style={{ fontWeight: 400, opacity: 0.6 }}>⭐ capa &nbsp;·&nbsp; ←→ reordenar &nbsp;·&nbsp; ✕ remover</span>}
                     </div>
-                  )}
 
-                  {/* Gallery URL editor */}
-                  <div style={{ marginTop: "0.75rem" }}>
-                    <div style={{ fontSize: "0.65rem", color: D.textMuted, fontWeight: 700, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "0.35rem" }}>URLs da Galeria (uma por linha)</div>
-                    <textarea
-                      rows={3}
-                      value={(project.gallery || []).join("\n")}
-                      onChange={e => updateField(idx, "gallery", e.target.value.split("\n").map(s => s.trim()).filter(Boolean))}
-                      style={{ width: "100%", background: D.inputBg, border: `1px solid ${D.inputBorder}`, borderRadius: "8px", color: D.text, fontSize: "0.8rem", padding: "0.6rem 0.85rem", outline: "none", boxSizing: "border-box", fontFamily: "monospace", resize: "vertical" }}
-                    />
+                    {allMedia.length > 0 && (
+                      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.75rem" }}>
+                        {allMedia.map((url, gi) => {
+                          const isCover = url === project.heroImage;
+                          const removeItem = () => {
+                            const updated = allMedia.filter((_, i) => i !== gi);
+                            updateField(idx, "gallery", updated);
+                            // if removed item was cover, reset cover to first remaining
+                            if (isCover && updated.length > 0) updateField(idx, "heroImage", updated[0]);
+                          };
+                          const moveItem = (dir: "left" | "right") => {
+                            const arr = [...allMedia];
+                            if (dir === "left" && gi > 0) [arr[gi - 1], arr[gi]] = [arr[gi], arr[gi - 1]];
+                            if (dir === "right" && gi < arr.length - 1) [arr[gi + 1], arr[gi]] = [arr[gi], arr[gi + 1]];
+                            updateField(idx, "gallery", arr);
+                          };
+                          return (
+                            <div key={gi} style={{ position: "relative", flexShrink: 0 }}>
+                              {/* Thumbnail */}
+                              <div
+                                onClick={() => setLightbox({ items: allMedia, index: gi })}
+                                style={{
+                                  width: "84px", height: "84px", borderRadius: "8px", overflow: "hidden", cursor: "pointer",
+                                  border: isCover ? "2px solid #f5c518" : `1px solid ${D.cardBorder}`,
+                                  boxShadow: isCover ? "0 0 0 1px rgba(245,197,24,0.3)" : "none"
+                                }}
+                              >
+                                {isVideo(url)
+                                  ? <div style={{ width: "100%", height: "100%", background: "#002040", display: "flex", alignItems: "center", justifyContent: "center", color: "#acd4f4", fontSize: "1.5rem" }}>▶</div>
+                                  : <img src={url} alt="" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                                }
+                              </div>
+
+                              {/* Delete × */}
+                              <button
+                                title="Remover da galeria"
+                                onClick={removeItem}
+                                style={{ position: "absolute", top: "-6px", left: "-6px", background: "#f87171", border: "none", borderRadius: "50%", width: "20px", height: "20px", fontSize: "0.65rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", boxShadow: "0 2px 4px rgba(0,0,0,0.3)", fontWeight: 700 }}
+                              >✕</button>
+
+                              {/* Cover star */}
+                              {!isVideo(url) && (
+                                <button
+                                  title={isCover ? "Capa atual" : "Definir como capa"}
+                                  onClick={() => updateField(idx, "heroImage", url)}
+                                  style={{ position: "absolute", top: "-6px", right: "-6px", background: isCover ? "#f5c518" : "rgba(0,0,0,0.55)", border: "none", borderRadius: "50%", width: "20px", height: "20px", fontSize: "0.6rem", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", boxShadow: "0 2px 4px rgba(0,0,0,0.3)" }}
+                                >⭐</button>
+                              )}
+
+                              {/* Reorder arrows */}
+                              <div style={{ position: "absolute", bottom: "3px", left: "50%", transform: "translateX(-50%)", display: "flex", gap: "2px" }}>
+                                <button
+                                  onClick={() => moveItem("left")} disabled={gi === 0} title="Mover para esquerda"
+                                  style={{ width: "20px", height: "18px", background: "rgba(0,0,0,0.6)", border: "none", color: gi === 0 ? "rgba(255,255,255,0.2)" : "#fff", cursor: gi === 0 ? "not-allowed" : "pointer", fontSize: "0.55rem", borderRadius: "3px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                                >◀</button>
+                                <button
+                                  onClick={() => moveItem("right")} disabled={gi === allMedia.length - 1} title="Mover para direita"
+                                  style={{ width: "20px", height: "18px", background: "rgba(0,0,0,0.6)", border: "none", color: gi === allMedia.length - 1 ? "rgba(255,255,255,0.2)" : "#fff", cursor: gi === allMedia.length - 1 ? "not-allowed" : "pointer", fontSize: "0.55rem", borderRadius: "3px", display: "flex", alignItems: "center", justifyContent: "center" }}
+                                >▶</button>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
+
+                    {allMedia.length === 0 && (
+                      <div style={{ color: D.textMuted, fontSize: "0.8rem", padding: "0.75rem", background: D.inputBg, borderRadius: "8px", textAlign: "center" }}>
+                        Nenhum arquivo na galeria. Faça upload abaixo.
+                      </div>
+                    )}
                   </div>
 
                   {/* Upload Zone */}
@@ -480,7 +517,7 @@ export default function AdminDashboardClient({ initialProjects }: { initialProje
                     projectId={project.id}
                     onUploaded={url => {
                       updateField(idx, "gallery", [...(project.gallery || []), url]);
-                      setFeedback({ type: "success", msg: "Arquivo enviado com sucesso! Clique em Publicar para salvar." });
+                      setFeedback({ type: "success", msg: "Arquivo enviado! Clique em Publicar para salvar." });
                       setTimeout(() => setFeedback(null), 6000);
                     }}
                   />

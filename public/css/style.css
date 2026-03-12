@@ -118,7 +118,7 @@ ul {
 }
 
 .section-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
     margin-bottom: var(--space-xl);
     position: relative;
     padding-bottom: var(--space-md);
@@ -449,19 +449,22 @@ ul {
 .project-card {
     background: var(--clr-white);
     border: 1px solid #EAEAEA;
+    border-radius: 12px;
     transition: var(--transition-fast);
     overflow: hidden;
     position: relative;
+    box-shadow: 0 2px 12px rgba(0,31,63,0.06);
 }
 
 .project-card:hover {
-    box-shadow: var(--shadow-hover);
-    transform: translateY(-5px);
+    box-shadow: 0 16px 40px rgba(0,31,63,0.14);
+    transform: translateY(-6px);
+    border-color: rgba(0,82,156,0.2);
 }
 
 .card-image-wrapper {
     position: relative;
-    height: 300px;
+    height: clamp(220px, 22vw, 320px);
     overflow: hidden;
 }
 
