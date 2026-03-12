@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 export default function LoginPage() {
   const [password, setPassword] = useState("");
@@ -27,9 +26,9 @@ export default function LoginPage() {
         router.refresh();
       } else {
         const data = await res.json();
-        setError(data.error || "Erro ao fazer login");
+        setError(data.error || "Senha incorreta");
       }
-    } catch (err) {
+    } catch {
       setError("Erro de rede. Tente novamente.");
     } finally {
       setLoading(false);
@@ -37,61 +36,135 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 font-['Montserrat']">
-      <div className="sm:mx-auto sm:w-full sm:max-w-md">
-        <Link href="/" className="flex justify-center mb-6">
-          <img
-            src="/assets/logo.png"
-            alt="La Roche Logo"
-            className="h-20 w-auto bg-[#00315e] p-2 rounded shadow-md"
-          />
-        </Link>
-        <h2 className="mt-6 text-center text-3xl font-extrabold text-[#00315e] font-['Playfair_Display']">
-          Acesso Restrito
-        </h2>
-        <p className="mt-2 text-center text-sm text-gray-600">
-          Painel de Gerenciamento La Roche
-        </p>
-      </div>
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(135deg, #001f3f 0%, #00315e 50%, #005090 100%)",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center",
+      fontFamily: "'Montserrat', sans-serif",
+      padding: "1rem"
+    }}>
+      {/* Decorative background pattern */}
+      <div style={{
+        position: "fixed", inset: 0, pointerEvents: "none", zIndex: 0,
+        backgroundImage: "radial-gradient(circle at 20% 50%, rgba(172,212,244,0.07) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(0,80,144,0.15) 0%, transparent 50%)"
+      }} />
 
-      <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
-        <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleLogin}>
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
-                Senha de Acesso
-              </label>
-              <div className="mt-1">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-[#00315e] focus:border-[#00315e] sm:text-sm text-black"
-                  placeholder="••••••••"
-                />
-              </div>
-            </div>
-
-            {error && (
-              <div className="text-red-600 text-sm font-medium p-2 bg-red-50 rounded border border-red-100">
-                {error}
-              </div>
-            )}
-
-            <div>
-              <button
-                type="submit"
-                disabled={loading}
-                className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-[#00315e] hover:bg-[#005090] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#00315e] disabled:opacity-70 transition-colors"
-              >
-                {loading ? "Verificando..." : "Entrar no Painel"}
-              </button>
-            </div>
-          </form>
+      <div style={{
+        background: "rgba(255,255,255,0.04)",
+        backdropFilter: "blur(24px)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        borderRadius: "20px",
+        padding: "3rem",
+        width: "100%",
+        maxWidth: "420px",
+        boxShadow: "0 30px 80px rgba(0,0,0,0.4)",
+        position: "relative",
+        zIndex: 1
+      }}>
+        {/* Logo */}
+        <div style={{ display: "flex", justifyContent: "center", marginBottom: "2rem" }}>
+          <div style={{
+            background: "rgba(255,255,255,0.08)",
+            borderRadius: "16px",
+            padding: "1rem",
+            border: "1px solid rgba(255,255,255,0.12)"
+          }}>
+            <img src="/assets/logo.png" alt="La Roche" style={{ height: "70px", width: "auto", display: "block" }} />
+          </div>
         </div>
+
+        {/* Heading */}
+        <h1 style={{
+          color: "#fff",
+          fontSize: "1.6rem",
+          fontWeight: 700,
+          textAlign: "center",
+          marginBottom: "0.4rem",
+          fontFamily: "'Playfair Display', serif",
+          letterSpacing: "0.02em"
+        }}>
+          Acesso Restrito
+        </h1>
+        <p style={{ color: "rgba(172,212,244,0.8)", textAlign: "center", fontSize: "0.85rem", marginBottom: "2rem" }}>
+          Painel Administrativo · La Roche Empreendimentos
+        </p>
+
+        {/* Form */}
+        <form onSubmit={handleLogin}>
+          <div style={{ marginBottom: "1.25rem" }}>
+            <label style={{ display: "block", color: "rgba(255,255,255,0.7)", fontSize: "0.75rem", fontWeight: 600, letterSpacing: "1px", textTransform: "uppercase", marginBottom: "0.5rem" }}>
+              Senha de Acesso
+            </label>
+            <input
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="••••••••••"
+              style={{
+                width: "100%",
+                padding: "0.9rem 1rem",
+                background: "rgba(255,255,255,0.07)",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: "10px",
+                color: "#fff",
+                fontSize: "1rem",
+                outline: "none",
+                boxSizing: "border-box",
+                transition: "border-color 0.2s ease"
+              }}
+              onFocus={e => e.target.style.borderColor = "rgba(172,212,244,0.6)"}
+              onBlur={e => e.target.style.borderColor = "rgba(255,255,255,0.15)"}
+            />
+          </div>
+
+          {error && (
+            <div style={{
+              background: "rgba(239,68,68,0.15)",
+              border: "1px solid rgba(239,68,68,0.4)",
+              borderRadius: "8px",
+              padding: "0.7rem 1rem",
+              color: "#fca5a5",
+              fontSize: "0.85rem",
+              marginBottom: "1.25rem",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.5rem"
+            }}>
+              <span>⚠</span> {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading}
+            style={{
+              width: "100%",
+              padding: "0.9rem",
+              background: loading ? "rgba(172,212,244,0.3)" : "linear-gradient(135deg, #005090, #00315e)",
+              color: "#fff",
+              border: "none",
+              borderRadius: "10px",
+              fontSize: "0.9rem",
+              fontWeight: 700,
+              letterSpacing: "0.5px",
+              cursor: loading ? "not-allowed" : "pointer",
+              transition: "opacity 0.2s ease, transform 0.1s ease",
+              boxShadow: "0 4px 15px rgba(0,49,94,0.4)"
+            }}
+            onMouseOver={e => !loading && ((e.target as HTMLElement).style.opacity = "0.9")}
+            onMouseOut={e => !loading && ((e.target as HTMLElement).style.opacity = "1")}
+          >
+            {loading ? "Verificando..." : "Entrar no Painel"}
+          </button>
+        </form>
+
+        {/* Footer */}
+        <p style={{ color: "rgba(255,255,255,0.25)", textAlign: "center", fontSize: "0.7rem", marginTop: "2rem" }}>
+          Acesso protegido por sessão criptografada
+        </p>
       </div>
     </div>
   );

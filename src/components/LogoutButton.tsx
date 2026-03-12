@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function LogoutButton() {
@@ -18,10 +18,27 @@ export default function LogoutButton() {
     <button
       onClick={handleLogout}
       disabled={isLoggingOut}
-      className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "0.4rem",
+        background: "rgba(248,113,113,0.1)",
+        border: "1px solid rgba(248,113,113,0.25)",
+        borderRadius: "6px",
+        color: "#fca5a5",
+        fontSize: "0.8rem",
+        fontWeight: 600,
+        cursor: isLoggingOut ? "not-allowed" : "pointer",
+        padding: "0.4rem 0.8rem",
+        transition: "background 0.2s ease, border-color 0.2s ease",
+        fontFamily: "'Montserrat', sans-serif",
+        opacity: isLoggingOut ? 0.6 : 1
+      }}
+      onMouseOver={e => !isLoggingOut && ((e.currentTarget as HTMLElement).style.background = "rgba(248,113,113,0.18)")}
+      onMouseOut={e => !isLoggingOut && ((e.currentTarget as HTMLElement).style.background = "rgba(248,113,113,0.1)")}
     >
-      <i className="ph ph-sign-out text-lg"></i>
-      {isLoggingOut ? "Saindo..." : "Sair do Painel"}
+      <span style={{ fontSize: "1rem" }}>⏻</span>
+      {isLoggingOut ? "Saindo..." : "Sair"}
     </button>
   );
 }
