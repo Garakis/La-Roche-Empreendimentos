@@ -240,14 +240,14 @@ ul {
 }
 
 .brand-logo {
-    height: 55px;
+    height: 85px;
     /* Adjust based on navbar height */
     width: auto;
     object-fit: contain;
 }
 
 .footer-logo {
-    height: 70px;
+    height: 100px;
     /* Slightly larger in footer */
 }
 
