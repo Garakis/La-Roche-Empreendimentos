@@ -216,14 +216,14 @@ ul {
     left: 0;
     width: 100%;
     z-index: 1000;
-    padding: 1.5rem 0;
+    padding: clamp(0.75rem, 1.5vw, 1.5rem) 0;
     transition: var(--transition-slow);
     background-color: transparent;
 }
 
 .navbar.scrolled {
     background-color: var(--clr-primary);
-    padding: 1rem 0;
+    padding: clamp(0.5rem, 1vw, 1rem) 0;
     box-shadow: var(--shadow-soft);
 }
 
@@ -240,29 +240,28 @@ ul {
 }
 
 .brand-logo {
-    height: 85px;
-    /* Adjust based on navbar height */
+    height: clamp(48px, 6vw, 80px);
     width: auto;
     object-fit: contain;
 }
 
 .footer-logo {
-    height: 100px;
-    /* Slightly larger in footer */
+    height: clamp(70px, 8vw, 100px);
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 2rem;
+    gap: clamp(1rem, 2vw, 2rem);
 }
 
 .nav-link {
     color: var(--clr-white);
-    font-size: 0.9rem;
+    font-size: clamp(0.78rem, 1vw, 0.9rem);
     font-weight: 500;
     position: relative;
     padding-bottom: 0.25rem;
+    white-space: nowrap;
 }
 
 .nav-link.btn-primary-outline {
