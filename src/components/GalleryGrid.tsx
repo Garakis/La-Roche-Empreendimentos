@@ -139,7 +139,7 @@ export default function GalleryGrid({ gallery, title }: Props) {
                         <span className="m-label">Ver todas</span>
                       </div>
                     )}
-                    {!isLast && <div className="pg-overlay"><div className="pg-overlay-icon">🔍</div></div>}
+                    {!isLast && <div className="pg-overlay"><div className="pg-overlay-icon"><i className="ph ph-magnifying-glass-plus" /></div></div>}
                   </div>
                 );
               })}

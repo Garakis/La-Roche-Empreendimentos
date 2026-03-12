@@ -23,7 +23,7 @@ export default async function PropertyPage(
         <img className="hero-bg" src={project.heroImage} alt={project.title} />
         <div className="container hero-content" style={{ textAlign: "center", margin: "0 auto", paddingTop: "40px" }}>
           <Link href="/#empreendimentos" style={{ display: "inline-flex", alignItems: "center", gap: "0.4rem", color: "rgba(255,255,255,0.7)", fontSize: "0.75rem", letterSpacing: "1px", textTransform: "uppercase", fontWeight: 600, marginBottom: "1.25rem", textDecoration: "none" }}>
-            ← Voltar
+            <i className="ph ph-caret-left" /> Voltar
           </Link>
           <h1 className="hero-title fade-in-up" style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}>{project.title}</h1>
           <p className="hero-subtitle fade-in-up delay-1" style={{ margin: "0 auto", fontSize: "clamp(0.9rem, 2vw, 1.25rem)" }}>{project.location}</p>
