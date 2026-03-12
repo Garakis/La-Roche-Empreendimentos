@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chamonix Tower | La Roche</title>
+    <title>Casa Pinda 01 | La Roche</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -19,6 +19,24 @@
         .property-info-list { list-style: none; padding: 0; }
         .property-info-list li { margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; }
         .property-info-list i { color: var(--clr-primary); font-size: 1.5rem; }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+        }
     </style>
 </head>
 <body>
@@ -33,9 +51,11 @@
                 <div class="nav-dropdown">
                     <a href="index.html#empreendimentos" class="nav-link dropdown-toggle">Empreendimentos <i class="ph-bold ph-caret-down"></i></a>
                     <div class="dropdown-menu">
-                        <a href="mont-blanc.html" class="dropdown-item">Residencial Mont Blanc</a>
-                        <a href="matterhorn.html" class="dropdown-item">Edifício Matterhorn</a>
-                        <a href="chamonix.html" class="dropdown-item">Chamonix Tower</a>
+                        <a href="casa-pinda-01.html" class="dropdown-item">Casa Pinda 01</a>
+                        <a href="casa-pinda-02.html" class="dropdown-item">Casa Pinda 02</a>
+                        <a href="galpao-comercial-sjc.html" class="dropdown-item">Galpão Comercial SJC</a>
+                        <a href="predio-pinda.html" class="dropdown-item">Prédio Pinda</a>
+                        <a href="villagio-gadioli-quiririm.html" class="dropdown-item">Villagio Gadioli Quiririm</a>
                     </div>
                 </div>
                 <a href="index.html#institucional" class="nav-link">Institucional</a>
@@ -48,33 +68,55 @@
     <main>
         <section class="hero property-hero">
             <div class="hero-overlay"></div>
-            <img class="hero-bg" src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?q=80&w=2000&auto=format&fit=crop" alt="Chamonix Tower">
+            <img class="hero-bg" src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20(3).jpeg" alt="Casa Pinda 01">
             <div class="container hero-content" style="text-align: center; margin: 0 auto; padding-top: 40px;">
-                <h1 class="hero-title fade-in-up" style="font-size: 3.5rem;">Chamonix Tower</h1>
-                <p class="hero-subtitle fade-in-up delay-1" style="margin: 0 auto;">Itaim Bibi, São Paulo</p>
+                <h1 class="hero-title fade-in-up" style="font-size: 3.5rem;">Casa Pinda 01</h1>
+                <p class="hero-subtitle fade-in-up delay-1" style="margin: 0 auto;">Pindamonhangaba, SP</p>
             </div>
         </section>
 
         <section class="property-details section container">
             <div class="property-header fade-in-up">
-                <span class="status-badge construction" style="position: static; display: inline-block; margin-bottom: 1rem;">Em Obras</span>
-                <h2>Vista panorâmica, conforto absoluto</h2>
-                <p style="max-width: 800px; margin: 0 auto; color: var(--clr-text-light); line-height: 1.8;">O mais novo cartão postal do Itaim Bibi traz um conceito único de planta inteligente com amplas varandas que se abrem para o skyline paulistano.</p>
+                <span class="status-badge ready" style="position: static; display: inline-block; margin-bottom: 1rem;">Pronto</span>
+                <h2>Descubra a Excelência</h2>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--clr-text-light); line-height: 1.8;">Conheça a Casa Pinda 01, um projeto excepcional localizado em Pindamonhangaba, destacando-se pela fachada imponente, conforto e exclusividade.</p>
             </div>
 
             <div class="property-grid fade-in-up delay-1">
                 <div>
-                    <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1000&auto=format&fit=crop" alt="Interior" style="width: 100%; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                    <img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20(2).jpeg" alt="Interior" style="width: 100%; border-radius: 8px; box-shadow: var(--shadow-soft);">
                 </div>
                 <div>
-                    <h3>Ficha Técnica</h3>
+                    <h3>Detalhes do Empreendimento</h3>
                     <ul class="property-info-list" style="margin-top: 1.5rem;">
-                        <li><i class="ph ph-squares-four"></i> Plantas de 120m² a 160m²</li>
-                        <li><i class="ph ph-bed"></i> 2 e 3 Suítes</li>
-                        <li><i class="ph ph-car"></i> 2 Vagas na garagem</li>
-                        <li><i class="ph ph-barbell"></i> Academia com design biofílico</li>
+                        <li><i class="ph ph-check-circle"></i> Excelente Localização</li>
+                        <li><i class="ph ph-check-circle"></i> Acabamento de Alto Padrão</li>
+                        <li><i class="ph ph-check-circle"></i> Ambientes Espaçosos</li>
+                        <li><i class="ph ph-check-circle"></i> Arquitetura Moderna</li>
                     </ul>
-                    <a href="https://wa.me/5512996191400?text=Olá!%20Gostaria%20de%20saber%20mais%20detalhes%20e%20falar%20com%20um%20consultor%20sobre%20o%20Chamonix%20Tower." class="btn btn-primary" style="margin-top: 2rem; display: inline-block;" target="_blank" rel="noopener noreferrer">Falar com consultor via WhatsApp</a>
+                    <a href="https://wa.me/5512996191400?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20e%20saber%20mais%20sobre%20o%20empreendimento%20Casa%20Pinda%2001." class="btn btn-primary" style="margin-top: 2rem; display: inline-block;" target="_blank" rel="noopener noreferrer">Fale com um corretor pelo WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="property-gallery fade-in-up delay-2">
+                <h3 style="margin-top: 4rem; text-align: center;">Galeria de Fotos</h3>
+                <div class="gallery-grid">
+                    <img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.28%20%281%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.28%20%282%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.28.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.29%20%281%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.29%20%282%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.29%20%283%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.29%20%284%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20%281%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20%282%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20%283%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.09.50%20%281%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.09.50%20%282%29.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+<img src="assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.09.50.jpeg" alt="Casa Pinda 01 Foto" loading="lazy">
+
                 </div>
             </div>
         </section>
@@ -123,7 +165,7 @@
         </div>
     </footer>
 
-    <a href="https://wa.me/5512996191400?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos%20da%20La%20Roche." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
+    <a href="https://wa.me/5512996191400?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos%20da%20La%20Roche." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
         <i class="ph-fill ph-whatsapp-logo"></i>
     </a>
     <script src="js/main.js"></script>

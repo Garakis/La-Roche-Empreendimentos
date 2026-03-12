@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villagio Gadioli Quiririm | La Roche</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="assets/logo.png" type="image/png">
+    <style>
+        .property-hero { height: 60vh; min-height: 400px; }
+        .property-details { padding: var(--space-xl) 0; }
+        .property-header { margin-bottom: var(--space-xl); text-align: center; }
+        .property-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: center; }
+        @media (max-width: 768px) { .property-grid { grid-template-columns: 1fr; } }
+        .property-info-list { list-style: none; padding: 0; }
+        .property-info-list li { margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-size: 1.1rem; }
+        .property-info-list i { color: var(--clr-primary); font-size: 1.5rem; }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <a href="index.html" class="logo" aria-label="La Roche Home">
+                <img src="assets/logo.png" alt="La Roche Empreendimentos" class="brand-logo">
+            </a>
+            <button class="mobile-menu-btn" aria-label="Menu" aria-expanded="false"><i class="ph ph-list"></i></button>
+            <nav class="nav-links">
+                <a href="index.html" class="nav-link" style="display:flex; align-items:center; gap:0.25rem;"><i class="ph-bold ph-arrow-left"></i> Voltar</a>
+                <div class="nav-dropdown">
+                    <a href="index.html#empreendimentos" class="nav-link dropdown-toggle">Empreendimentos <i class="ph-bold ph-caret-down"></i></a>
+                    <div class="dropdown-menu">
+                        <a href="casa-pinda-01.html" class="dropdown-item">Casa Pinda 01</a>
+                        <a href="casa-pinda-02.html" class="dropdown-item">Casa Pinda 02</a>
+                        <a href="galpao-comercial-sjc.html" class="dropdown-item">Galpão Comercial SJC</a>
+                        <a href="predio-pinda.html" class="dropdown-item">Prédio Pinda</a>
+                        <a href="villagio-gadioli-quiririm.html" class="dropdown-item">Villagio Gadioli Quiririm</a>
+                    </div>
+                </div>
+                <a href="index.html#institucional" class="nav-link">Institucional</a>
+                <a href="index.html#vendas" class="nav-link">Vendas</a>
+                <a href="#contato" class="nav-link btn-primary-outline">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero property-hero">
+            <div class="hero-overlay"></div>
+            <img class="hero-bg" src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.08%20(1).jpeg" alt="Villagio Gadioli Quiririm">
+            <div class="container hero-content" style="text-align: center; margin: 0 auto; padding-top: 40px;">
+                <h1 class="hero-title fade-in-up" style="font-size: 3.5rem;">Villagio Gadioli Quiririm</h1>
+                <p class="hero-subtitle fade-in-up delay-1" style="margin: 0 auto;">Quiririm, Taubaté, SP</p>
+            </div>
+        </section>
+
+        <section class="property-details section container">
+            <div class="property-header fade-in-up">
+                <span class="status-badge release" style="position: static; display: inline-block; margin-bottom: 1rem;">Lançamento</span>
+                <h2>Descubra a Excelência</h2>
+                <p style="max-width: 800px; margin: 0 auto; color: var(--clr-text-light); line-height: 1.8;">Conheça o Villagio Gadioli Quiririm, um lançamento exclusivo pensado em cada detalhe para as famílias que buscam viver cercado de qualidade e luxo.</p>
+            </div>
+
+            <div class="property-grid fade-in-up delay-1">
+                <div>
+                    <img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.26%20(2).jpeg" alt="Interior" style="width: 100%; border-radius: 8px; box-shadow: var(--shadow-soft);">
+                </div>
+                <div>
+                    <h3>Detalhes do Empreendimento</h3>
+                    <ul class="property-info-list" style="margin-top: 1.5rem;">
+                        <li><i class="ph ph-check-circle"></i> Excelente Localização</li>
+                        <li><i class="ph ph-check-circle"></i> Acabamento de Alto Padrão</li>
+                        <li><i class="ph ph-check-circle"></i> Ambientes Espaçosos</li>
+                        <li><i class="ph ph-check-circle"></i> Arquitetura Moderna</li>
+                    </ul>
+                    <a href="https://wa.me/5512996191400?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20uma%20visita%20e%20saber%20mais%20sobre%20o%20empreendimento%20Villagio%20Gadioli%20Quiririm." class="btn btn-primary" style="margin-top: 2rem; display: inline-block;" target="_blank" rel="noopener noreferrer">Fale com um corretor pelo WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="property-gallery fade-in-up delay-2">
+                <h3 style="margin-top: 4rem; text-align: center;">Galeria de Fotos</h3>
+                <div class="gallery-grid">
+                    <img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.26%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.26%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.26.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.27%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.27%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.27%20%283%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.27.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.28%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.28%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%207/WhatsApp%20Image%202026-03-12%20at%2007.21.28.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.48%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.48%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.48.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.49%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.49%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.49%20%283%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casa%208/WhatsApp%20Image%202026-03-12%20at%2007.21.49.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.07.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.08%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.08%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.08%20%283%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.08%20%284%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.08.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.09%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.09%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.09%20%283%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.09%20%284%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.09.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.10%20%281%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.10%20%282%29.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+<img src="assets/empreendimentos/Villagio%20Gadioli%20Quiririm/Casas%201%20a%206/WhatsApp%20Image%202026-03-12%20at%2007.21.10.jpeg" alt="Villagio Gadioli Quiririm Foto" loading="lazy">
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" id="contato">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo logo-light" aria-label="La Roche Home">
+                    <img src="assets/logo.png" alt="La Roche Empreendimentos" class="brand-logo footer-logo">
+                </a>
+                <p class="footer-desc">Construindo legados de excelência e sofisticação no mercado imobiliário de alto padrão.</p>
+            </div>
+            <div class="footer-links">
+                <h4 class="footer-heading">Navegação</h4>
+                <ul>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#empreendimentos">Empreendimentos</a></li>
+                    <li><a href="index.html#institucional">Institucional</a></li>
+                    <li><a href="index.html#vendas">Portal do Cliente</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4 class="footer-heading">Contato</h4>
+                <ul class="contact-list">
+                    <li>
+                        <i class="ph-fill ph-phone"></i> 
+                        <div><span>Paulo Cordeiro</span><br><a href="tel:+5512996331400" style="color: white; font-weight: 500;">(12) 99633-1400</a></div>
+                    </li>
+                    <li>
+                        <i class="ph-fill ph-phone"></i> 
+                        <div><span>Paulo Cordeiro Filho</span><br><a href="tel:+5512996191400" style="color: white; font-weight: 500;">(12) 99619-1400</a></div>
+                    </li>
+                    <li><i class="ph-fill ph-envelope-simple"></i> contato@laroche.com.br</li>
+                </ul>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/laroche.empreendimentos/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
+                    <a href="#" aria-label="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom container">
+            <p>&copy; 2026 La Roche Empreendimentos. Todos os direitos reservados.</p>
+            <p>Desenvolvido com <i class="ph-fill ph-heart"></i></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/5512996191400?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20empreendimentos%20da%20La%20Roche." class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contato via WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
+    </a>
+    <script src="js/main.js"></script>
+</body>
+</html>
