@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "La Roche Empreendimentos | Alto Padrão",
-  description: "La Roche Empreendimentos - Incorporadora focada em projetos de alto padrão e luxo.",
+  title: "La Roche Empreendimentos | Imóveis de Alto Padrão e Exclusividade",
+  description: "Descubra o padrão La Roche. Incorporadora especializada em empreendimentos de luxo, casas de alto padrão e projetos comerciais exclusivos no Vale do Paraíba.",
   icons: {
     icon: "/assets/logo.png"
   }
