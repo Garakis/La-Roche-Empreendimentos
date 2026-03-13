@@ -22,7 +22,7 @@ export const mockProjects: Project[] = [
     status: "Pronto",
     statusClass: "ready",
     desc: "Conheça a Casa no condominio Vila Romana em Pindamonhangaba, um projeto excepcional localizado em Pindamonhangaba, destacando-se pela fachada imponente, conforto e exclusividade.",
-    heroImage: "/assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20(3).jpeg",
+    heroImage: "/assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.09.50.jpeg",
     innerImage: "/assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20(2).jpeg",
     gallery: [
       "/assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.28%20(1).jpeg",
@@ -50,7 +50,7 @@ export const mockProjects: Project[] = [
     status: "Pronto",
     statusClass: "ready",
     desc: "Conheça a Casa no condominio Vila Romana em Pindamonhangaba, um empreendimento de alto padrão construído para oferecer a melhor experiência de vida e bem-estar para sua família.",
-    heroImage: "/assets/empreendimentos/Casa%20Pinda%2002/WhatsApp%20Image%202026-03-12%20at%2007.10.50.jpeg",
+    heroImage: "/assets/empreendimentos/Casa%20Pinda%2002/WhatsApp%20Image%202026-03-12%20at%2007.10.48.jpeg",
     innerImage: "/assets/empreendimentos/Casa%20Pinda%2002/WhatsApp%20Image%202026-03-12%20at%2007.10.48.jpeg",
     gallery: [
       "/assets/empreendimentos/Casa%20Pinda%2002/WhatsApp%20Image%202026-03-12%20at%2007.10.48%20(1).jpeg",
