@@ -112,9 +112,9 @@ export const mockProjects: Project[] = [
     id: "predio-pinda",
     title: "Predio - Condominio Villa D Europa - Pindamonhangaba",
     location: "Pindamonhangaba, SP",
-    status: "Em Obras",
-    statusClass: "construction",
-    desc: "O Predio - Condominio Villa D Europa - Pindamonhangaba encontra-se em estágio de obras, trazendo o conceito moderno de engenharia e a tradição La Roche em cada detalhe de seu desenvolvimento.",
+    status: "Pronto",
+    statusClass: "ready",
+    desc: "O Predio - Condominio Villa D Europa - Pindamonhangaba é um projeto concluído que traz o ápice da engenharia moderna e a tradição La Roche em cada detalhe de seu acabamento.",
     heroImage: "/assets/empreendimentos/Predio%20Pinda/WhatsApp%20Image%202026-03-12%20at%2007.16.10%20(3).jpeg",
     innerImage: "/assets/empreendimentos/Predio%20Pinda/WhatsApp%20Image%202026-03-12%20at%2007.16.10%20(1).jpeg",
     gallery: [
