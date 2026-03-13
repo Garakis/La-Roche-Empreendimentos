@@ -17,11 +17,11 @@ export const mockProjects: Project[] = [
   {
     order: 1,
     id: "casa-pinda-01",
-    title: "Casa Pinda 01",
+    title: "Casa no condominio Vila Romana em Pindamonhangaba",
     location: "Pindamonhangaba, SP",
     status: "Pronto",
     statusClass: "ready",
-    desc: "Conheça a Casa Pinda 01, um projeto excepcional localizado em Pindamonhangaba, destacando-se pela fachada imponente, conforto e exclusividade.",
+    desc: "Conheça a Casa no condominio Vila Romana em Pindamonhangaba, um projeto excepcional localizado em Pindamonhangaba, destacando-se pela fachada imponente, conforto e exclusividade.",
     heroImage: "/assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20(3).jpeg",
     innerImage: "/assets/empreendimentos/Casa%20Pinda%2001/WhatsApp%20Image%202026-03-12%20at%2007.08.30%20(2).jpeg",
     gallery: [
