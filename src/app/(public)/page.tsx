@@ -11,7 +11,7 @@ export default async function Home() {
         <div className="hero-overlay"></div>
         <img
           className="hero-bg"
-          src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2075&auto=format&fit=crop"
+          src="/assets/hero-home.jpg"
           alt="Empreendimento Destaque"
         />
         <div className="container hero-content">
