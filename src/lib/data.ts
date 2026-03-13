@@ -45,11 +45,11 @@ export const mockProjects: Project[] = [
   {
     order: 2,
     id: "casa-pinda-02",
-    title: "Casa Pinda 02",
+    title: "Casa no condominio Vila Romana em Pindamonhangaba",
     location: "Pindamonhangaba, SP",
     status: "Pronto",
     statusClass: "ready",
-    desc: "Conheça a Casa Pinda 02, um empreendimento de alto padrão construído para oferecer a melhor experiência de vida e bem-estar para sua família.",
+    desc: "Conheça a Casa no condominio Vila Romana em Pindamonhangaba, um empreendimento de alto padrão construído para oferecer a melhor experiência de vida e bem-estar para sua família.",
     heroImage: "/assets/empreendimentos/Casa%20Pinda%2002/WhatsApp%20Image%202026-03-12%20at%2007.10.50.jpeg",
     innerImage: "/assets/empreendimentos/Casa%20Pinda%2002/WhatsApp%20Image%202026-03-12%20at%2007.10.48.jpeg",
     gallery: [
@@ -84,11 +84,11 @@ export const mockProjects: Project[] = [
   {
     order: 3,
     id: "galpao-comercial-sjc",
-    title: "Galpão Comercial SJC",
+    title: "Galpão Comercial - São José dos Campos",
     location: "São José dos Campos, SP",
     status: "Pronto",
     statusClass: "ready",
-    desc: "O Galpão Comercial SJC é a estrutura ideal para impulsionar seus negócios, com excelente localização, acessibilidade e flexibilidade de espaço.",
+    desc: "O Galpão Comercial - São José dos Campos é a estrutura ideal para impulsionar seus negócios, com excelente localização, acessibilidade e flexibilidade de espaço.",
     heroImage: "/assets/empreendimentos/Galp%C3%A3o%20Comercial%20SJC/WhatsApp%20Image%202026-03-12%20at%2007.14.08%20(1).jpeg",
     innerImage: "/assets/empreendimentos/Galp%C3%A3o%20Comercial%20SJC/WhatsApp%20Image%202026-03-12%20at%2007.14.07%20(2).jpeg",
     gallery: [
@@ -110,11 +110,11 @@ export const mockProjects: Project[] = [
   {
     order: 4,
     id: "predio-pinda",
-    title: "Prédio Pinda",
+    title: "Predio - Condominio Villa D Europa - Pindamonhangaba",
     location: "Pindamonhangaba, SP",
     status: "Em Obras",
     statusClass: "construction",
-    desc: "O Prédio Pinda encontra-se em estágio de obras, trazendo o conceito moderno de engenharia e a tradição La Roche em cada detalhe de seu desenvolvimento.",
+    desc: "O Predio - Condominio Villa D Europa - Pindamonhangaba encontra-se em estágio de obras, trazendo o conceito moderno de engenharia e a tradição La Roche em cada detalhe de seu desenvolvimento.",
     heroImage: "/assets/empreendimentos/Predio%20Pinda/WhatsApp%20Image%202026-03-12%20at%2007.16.10%20(3).jpeg",
     innerImage: "/assets/empreendimentos/Predio%20Pinda/WhatsApp%20Image%202026-03-12%20at%2007.16.10%20(1).jpeg",
     gallery: [
