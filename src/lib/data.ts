@@ -186,17 +186,17 @@ export const mockProjects: Project[] = [
 ];
 
 export async function getProjects(): Promise<Project[]> {
-  if (supabase['supabaseUrl'] && !supabase['supabaseUrl'].includes('placeholder')) {
+  /* if (supabase['supabaseUrl'] && !supabase['supabaseUrl'].includes('placeholder')) {
     const { data, error } = await supabase.from('projects').select('*').order('order', { ascending: true });
     if (!error && data && data.length > 0) return data;
-  }
+  } */
   return mockProjects.sort((a, b) => a.order - b.order);
 }
 
 export async function getProjectById(id: string): Promise<Project | undefined> {
-  if (supabase['supabaseUrl'] && !supabase['supabaseUrl'].includes('placeholder')) {
+  /* if (supabase['supabaseUrl'] && !supabase['supabaseUrl'].includes('placeholder')) {
     const { data, error } = await supabase.from('projects').select('*').eq('id', id).single();
     if (!error && data) return data;
-  }
+  } */
   return mockProjects.find(p => p.id === id);
 }
